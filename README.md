@@ -1,61 +1,45 @@
 # Effects of Professor Performance and Student Behavior on Overall Teaching Evaluation in Marketing Courses at Miami University
 
-## Overview
+## Project Overview
 
-This project explores the determinants of student teaching evaluations in Marketing courses. By analyzing data from Miami University, the study aims to quantify how much of the "Overall" course rating is driven by **instructor performance** versus **student behavioral factors**.
+This project analyzes the drivers of "Overall Instructor Rating" (`iRating`) using evaluation data from **Marketing (MKT) courses at Miami University** collected between 2013 and 2017. 
 
-The analysis provides insights into the validity of teaching evaluations and identifies key actionable areas for improving instruction quality.
+The study aims to deconstruct the validity of student evaluations by distinguishing between the influence of **instructor performance** (e.g., clarity, enthusiasm) and **student behavior** (e.g., interest, reason for taking the course).
 
 ## Research Questions
 
-The project seeks to answer the following key questions:
-- What are the most significant predictors of a positive overall teaching evaluation?
-- Do student behaviors (attendance, interest) bias the evaluation of the professor?
-- Are there statistically significant differences in evaluations based on course level or other categorical factors?
+1.  **Professor Effect:** How much do specific measures of instructor performance influence the final "Overall Rating"?
+2.  **Student Effect:** Is there a statistical link between student behavior/engagement and the rating they give?
+3.  **Course Type Variation:** Do these relationships change depending on whether the course is a **Core Requirement** or an **Elective**?
+
+## Data & Variables
+
+The analysis is based on aggregated course-section data containing:
+* **Dependent Variable:** `iRating` (Overall Instructor Rating, 0-4 scale).
+* **Predictors:** * **Professor Performance (`i*`):** 15 items measuring attributes like preparedness and enthusiasm.
+    * **Student Behavior (`s*`):** 6 items including Interest, Attendance, and Expected Grade.
+    * **Control:** `CourseType` (MKT Core, MKT Elective, FSB Core, MKT Capstone).
 
 ## Methodology
 
-The project is implemented in **R** and utilizes a standard statistical analysis pipeline:
+The analysis employs advanced statistical modeling techniques implemented in **R**:
 
-1.  **Data Cleaning & Preprocessing:** Handling missing values and formatting categorical variables.
-2.  **Exploratory Data Analysis (EDA):**
-    -   Histograms and Boxplots for variable distribution.
-    -   Correlation matrices to detect multicollinearity.
-3.  **Statistical Inference:**
-    -   **T-tests / ANOVA:** To compare means across different groups (e.g., different marketing professors or course levels).
-    -   **Multiple Linear Regression:** To model the relationship between `Overall` rating and the independent variables.
-    -   **Model Diagnostics:** Checking assumptions of linearity, normality, and homoscedasticity.
-
-## Technologies
-
-* **Language:** R 🔵
-* **Libraries:** `tidyverse` (ggplot2, dplyr), `knitr`, `rmarkdown` (and likely `car` or `MASS` for statistics).
-* **Output:** HTML Report generated via RMarkdown.
+1.  **Feature Importance:** Used **Random Forest Regression** (1,000 trees) to identify top predictors and handle multicollinearity among instructor metrics.
+2.  **Dimension Reduction:** Applied **Principal Component Analysis (PCA)** to address the high correlation between professor performance items.
+3.  **Statistical Inference:** Developed **Hierarchical Linear Mixed Effects Models** (Weighted Two-Level Random Effects) to account for course sections nested within instructors.
 
 ## Key Findings
 
-* **Professor Performance:** Attributes related to the instructor's delivery and organization are typically the strongest predictors of the overall score.
-* **Student Bias:** Student interest and engagement levels have a measurable, though often secondary, impact on how they rate the course.
-* *(Note: Specific coefficients and p-values can be found in the `final_report.html` file.)*
+* **Instructor Dominance:** Instructor performance metrics (particularly `iInstructor` composite scores) are the strongest predictors of the overall rating.
+* **Student Influence:** Student behavior is a statistically significant but secondary factor compared to teaching quality.
+* **Course Type:** After controlling for professor and student factors, **Course Type was found NOT to be a significant predictor** of overall ratings.
 
-## How to Run
+## Files
 
-1.  Clone this repository:
-    ```bash
-    git clone [https://github.com/yourusername/Marketing-Course-Evaluation-Drivers.git](https://github.com/yourusername/Marketing-Course-Evaluation-Drivers.git)
-    ```
-2.  Open the `.Rmd` file in **RStudio**.
-3.  Ensure required packages are installed:
-    ```r
-    install.packages(c("tidyverse", "knitr", "rmarkdown"))
-    ```
-4.  Knit the document to HTML or PDF to view the full analysis.
+* `MKT_Rongrong_RICHEL_final_report.html`: The full analysis report generated via RMarkdown.
 
 ## Authors
 
 * **Rongrong**
 * **RICHEL**
-* *Master's Student in Statistics*
-
----
-*This project is for academic and research purposes.*
+* *Master's Students in Statistics*
