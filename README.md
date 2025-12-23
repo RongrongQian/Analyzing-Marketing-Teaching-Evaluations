@@ -13,17 +13,6 @@ The project seeks to answer the following key questions:
 - Do student behaviors (attendance, interest) bias the evaluation of the professor?
 - Are there statistically significant differences in evaluations based on course level or other categorical factors?
 
-## Dataset
-
-The analysis is based on a dataset comprising teaching evaluation metrics from Marketing courses.
-
-| Variable Category | Examples |
-|-------------------|----------|
-| **Dependent Variable** | `Overall` (Overall course rating) |
-| **Professor Metrics** | Preparedness, Enthusiasm, Clarity, Grading Fairness |
-| **Student Metrics** | `Interest` (Pre-course interest), Attendance, `Retake` (Willingness to retake) |
-| **Control Variables** | Course Level, Class Size, etc. |
-
 ## Methodology
 
 The project is implemented in **R** and utilizes a standard statistical analysis pipeline:
